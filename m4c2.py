@@ -249,29 +249,32 @@ print("\nLista de Vehiculos Motocicleta:")
 for vehiculo in vehiculos_recuperados['Motocicleta']:
     print(vehiculo.get_info())
 
-
 #  Solo para para cumplir con la rubrica 4 que dice: 
 # "Bosqueja un diagrama de clases para representar el problema distinguiendo clases, atributos, métodos y relación entre clases"
 
 # Clases:
-
-# 1.	Clase Vehiculo
+# 0.	Clase Vehiculo
 # •	Atributos:
 # •	marca (tipo: str)
 # •	modelo (tipo: str)
 # •	nro_ruedas (tipo: int)
+# •	Métodos:
+# •	get_info() (tipo: str)
+
+# 1.	Clase Automovil (subclase de vehículo)
+# •	Atributos adicionales:
 # •	velocidad (tipo: int)
 # •	cilindrada (tipo: int)
 # •	Métodos:
 # •	get_info() (tipo: str)
 
-# 2.	Clase Particular (subclase de Vehiculo)
+# 2.	Clase Particular (subclase de Automovil)
 # •	Atributos adicionales:
 # •	nro_puestos (tipo: int)
 # •	Métodos adicionales:
 # •	get_info() (tipo: str)
 
-# 3.	Clase Carga (subclase de Vehiculo)
+# 3.	Clase Carga (subclase de Automovil)
 # •	Atributos adicionales:
 # •	carga (tipo: int)
 # •	Métodos adicionales:
@@ -303,62 +306,41 @@ for vehiculo in vehiculos_recuperados['Motocicleta']:
 # •	Motocicleta es una subclase de Bicicleta, lo que indica una relación de herencia adicional.
 # •	VehiculoManager interactúa con las demás clases para gestionar la carga y lectura de datos desde y hacia un archivo CSV, lo que indica una relación de dependencia entre VehiculoManager y las demás clases.
 
-
-
 # ahora el dibujo que representa lo anteriormente descrito:
 
-# +-------------------+
-# |     Vehiculo      |
-# +-------------------+
-# | - marca: str      |
-# | - modelo: str     |
-# | - nro_ruedas: int |
-# | - velocidad: str  |
-# | - cilindrada: str |
-# +-------------------+
-# | + get_info(): str |
-# +-------------------+
-#           ^
-#           |
-#           |
-# +------------------+
-# |    Particular    |
-# +------------------+
-# | - nro_puestos: str|
-# +------------------+
-# | + get_info(): str|
-# +------------------+
-#           ^
-#           |
-#           |
-# +------------------+
-# |      Carga       |
-# +------------------+
-# | - carga: str     |
-# +------------------+
-# | + get_info(): str|
-# +------------------+
-#           ^
-#           |
-#           |
-# +------------------+
-# |    Bicicleta     |
-# +------------------+
-# | - tipo: str      |
-# +------------------+
-# | + get_info(): str|
-# +------------------+
-#           ^
-#           |
-#           |
-# +------------------+
-# |   Motocicleta    |
-# +------------------+
-# | - motor: str     |
-# | - cuadro: str    |
-# | - nro_radios: int|
-# +------------------+
-# | + get_info(): str|
-# +------------------+
+# +-----------------------+
+# |     Vehiculo          |
+# +-----------------------+
+# | - marca: str          |
+# | - modelo: str         |
+# | - nro_ruedas: int     |
+# +-----------------------+
+# | + get_info(): str     |
+# +--------------------- -+
+#           ^           ^
+#           |           |
+#           |           |
+# +----------------+   +----------------+          +-------------------+
+# |   Automovil    |   |    Bicicleta   |          |   Motocicleta     |
+# +----------------+   +----------------+          +-------------------+
+# |- velocidad:str |   | - tipo: str    |          | - motor: str      |
+# |- cilindrada:str|   +----------------+ <------- | - cuadro: str     |
+# +----------------+   |+ get_info():str|          | - nro_radios: int |
+# |+ get_info():str|   +----------------+          +-------------------+
+# +-------------- -+                               |+ get_info():str   |  
+#      ^        ^                                  +-------------------+ 
+#      |        |______________________
+#      |                               |
+# +------------------+         +------------------+   
+# |    Particular    |         |      Carga       |
+# +------------------+         +------------------+   
+# |- nro_puestos: str|         | - carga: str     |
+# +------------------+         +------------------+   
+# | + get_info(): str|         | + get_info(): str|
+# +------------------+         +------------------+   
+
+
+
+
 
 
